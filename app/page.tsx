@@ -27,7 +27,7 @@ export default function Home() {
         stars.style.left = value * 0.25 + "px";
         moon.style.top = value * 1.05 + "px";
         mountains_behind.style.top = value * 0.5 + "px";
-        text.style.transform = `translate(${(-value + 300) * 2.5}px, ${
+        text.style.transform = `translate(${(-value + 150) * 4}px, ${
           (-96 + value) * 0.5
         }px)`;
         btn.style.transform = `translate(0px, ${96 + value * 0.5}px)`;
