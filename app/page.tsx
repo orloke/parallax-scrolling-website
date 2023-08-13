@@ -105,39 +105,36 @@ export default function Home() {
     const tl = gsap.timeline();
     console.log(open);
     if (!open) {
-      tl
-      // .to("header", {
-      //   css: {
-      //     position: !open ? "fixed" : "absolute",
-      //   },
-      // })
-      //   .to(["#menuMobile"], {
-      //     position: !open ? "fixed" : "relative",
-      //     ease: "power3.inOut",
-      //   })
-        .fromTo(
-          ["#revealMenuBackground", "#revealMenu"],
-          {
-            // delay: -1,
-            height: 0,
-            ease: "power3.inOut",
-            stagger: {
-              amount: 0.1,
-            },
+      tl.fromTo(
+        ["#revealMenuBackground", "#revealMenu"],
+        {
+          height: 0,
+          ease: "power3.inOut",
+          transformOrigin: "right top",
+          skewY: 2,
+          stagger: {
+            amount: 0.1,
           },
-          {
-            height: "110vh",
-            transformOrigin: "right top",
-            skewY: 2,
-            duration: 0.8,
-            ease: "power3.inOut",
-            stagger: {
-              amount: 0.1,
-            },
+        },
+        {
+          height: "100vh",
+          duration: 0.8,
+          ease: "power3.inOut",
+          skewY: 0,
+          position: "fixed",
+          stagger: {
+            amount: 0.1,
           },
-        );
+        },
+      ).from("#linkMenuMobile", {
+        duration: 0.8,
+        y: 100,
+        stagger: 0.3,
+        ease: "power4.out",
+        delay: -0.5,
+      });
     } else {
-      tl.to(["#revealMenu","#revealMenuBackground" ], {
+      tl.to(["#revealMenu", "#revealMenuBackground"], {
         duration: 0.8,
         transformOrigin: "right bottom",
         skewY: 2,
@@ -163,13 +160,40 @@ export default function Home() {
         <div
           id='revealMenu'
           className='absolute inset-0 h-0 bg-[#2b1055] overflow-hidden'
-        ></div>
+        >
+          <ul className='flex flex-col justify-center items-center gap-20 w-full h-full'>
+            <li>
+              <Link id='linkMenuMobile' href='#' className='active'>
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link id='linkMenuMobile' href='#'>
+                About
+              </Link>
+            </li>
+            <li>
+              <Link id='linkMenuMobile' href='#'>
+                Work
+              </Link>
+            </li>
+            <li>
+              <Link id='linkMenuMobile' href='#'>
+                Contact
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
       <div
         id='square-container'
         className='absolute bg-[#2b1055] overflow-hidden flex flex-wrap inset-0 z-[80]'
       />
-      <header className='absolute top-0 left-0 z-[70] flex justify-between items-center w-full py-7 px-24 sm:px-4 '>
+      <header
+        className={`${
+          open ? "fixed" : "absolute"
+        } top-0 left-0 z-[70] flex justify-between items-center w-full py-7 px-24 sm:px-4`}
+      >
         <Link
           href='#'
           className='text-white font-bold text-[2em] sm:text-base uppercase tracking-[2px]  '
