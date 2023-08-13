@@ -6,10 +6,12 @@ import stars from "@/app/assets/stars.png";
 import moon from "@/app/assets/moon.png";
 import mountains_front from "@/app/assets/mountains_front.png";
 import mountains_behind from "@/app/assets/mountains_behind.png";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { gsap } from "gsap";
 
 export default function Home() {
+  const [open, setOpen] = useState(false);
+
   useEffect(() => {
     if (window != undefined) {
       const tl = gsap.timeline();
@@ -91,25 +93,97 @@ export default function Home() {
           (-96 + value) * 0.5
         }px)`;
         btn.style.transform = `translate(0px, ${96 + value * 0.5}px)`;
-        header.style.top = value * 0.5 + "px";
+        if (open) {
+          header.style.top = value * 0.5 + "px";
+        }
       });
     }
   }, []);
 
+  const menuMobile = () => {
+    setOpen(prev => !prev);
+    const tl = gsap.timeline();
+    console.log(open);
+    if (!open) {
+      tl
+      // .to("header", {
+      //   css: {
+      //     position: !open ? "fixed" : "absolute",
+      //   },
+      // })
+      //   .to(["#menuMobile"], {
+      //     position: !open ? "fixed" : "relative",
+      //     ease: "power3.inOut",
+      //   })
+        .fromTo(
+          ["#revealMenuBackground", "#revealMenu"],
+          {
+            // delay: -1,
+            height: 0,
+            ease: "power3.inOut",
+            stagger: {
+              amount: 0.1,
+            },
+          },
+          {
+            height: "110vh",
+            transformOrigin: "right top",
+            skewY: 2,
+            duration: 0.8,
+            ease: "power3.inOut",
+            stagger: {
+              amount: 0.1,
+            },
+          },
+        );
+    } else {
+      tl.to(["#revealMenu","#revealMenuBackground" ], {
+        duration: 0.8,
+        transformOrigin: "right bottom",
+        skewY: 2,
+        height: 0,
+        ease: "power3.inOut",
+        stagger: {
+          amount: 0.1,
+        },
+      });
+    }
+  };
+
   return (
     <main className='relative h-screen bg-gradient-body overflow-hidden'>
       <div
+        id='menuMobile'
+        className='hidden sm:flex h-auto relative w-full z-[60] inset-0'
+      >
+        <div
+          id='revealMenuBackground'
+          className='absolute inset-0 h-0 -z-10 bg-[#7597de]'
+        />
+        <div
+          id='revealMenu'
+          className='absolute inset-0 h-0 bg-[#2b1055] overflow-hidden'
+        ></div>
+      </div>
+      <div
         id='square-container'
-        className='absolute bg-[#2b1055] overflow-hidden flex flex-wrap inset-0 z-[60]'
+        className='absolute bg-[#2b1055] overflow-hidden flex flex-wrap inset-0 z-[80]'
       />
-      <header className='absolute top-0 left-0 z-50 flex justify-between items-center w-full py-7 px-24 sm:hidden '>
+      <header className='absolute top-0 left-0 z-[70] flex justify-between items-center w-full py-7 px-24 sm:px-4 '>
         <Link
           href='#'
-          className='text-white font-bold text-[2em] uppercase tracking-[2px]  '
+          className='text-white font-bold text-[2em] sm:text-base uppercase tracking-[2px]  '
         >
           Logo
         </Link>
-        <ul>
+        <button
+          className='hidden sm:flex text-center font-bold text-[2em] sm:text-sm uppercase tracking-[2px] py-1 px-2
+            rounded-2xl transition-colors duration-300 bg-white text-[#2b1055]'
+          onClick={menuMobile}
+        >
+          {open ? "Close" : "Menu"}
+        </button>
+        <ul className='sm:hidden'>
           <li>
             <Link href='#' className='active'>
               Home
