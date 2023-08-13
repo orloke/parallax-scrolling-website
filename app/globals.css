@@ -31,3 +31,7 @@ section img {
   color: #2b1055;
   background: white;
 }
+
+.square {
+  @apply w-[100px] h-[100px] bg-[#2b1055] pointer-events-none
+}

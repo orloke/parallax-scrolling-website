@@ -7,10 +7,13 @@ import moon from "@/app/assets/moon.png";
 import mountains_front from "@/app/assets/mountains_front.png";
 import mountains_behind from "@/app/assets/mountains_behind.png";
 import { useEffect } from "react";
+import { gsap } from "gsap";
 
 export default function Home() {
   useEffect(() => {
     if (window != undefined) {
+      const tl = gsap.timeline();
+
       const stars = document.querySelector("#stars") as HTMLElement;
       const moon = document.querySelector("#moon") as HTMLElement;
       const mountains_behind = document.querySelector(
@@ -18,9 +21,66 @@ export default function Home() {
       ) as HTMLElement;
       const text = document.querySelector("#text") as HTMLElement;
       const btn = document.querySelector("#btn") as HTMLElement;
-      const header = document.querySelector(
-        "header",
+      const header = document.querySelector("header") as HTMLElement;
+
+      const squareContainer = document.querySelector(
+        "#square-container",
       ) as HTMLElement;
+
+      const squareSize = 100;
+
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
+
+      const numCols = Math.ceil(screenWidth / squareSize);
+      const numRows = Math.ceil(screenHeight / squareSize);
+      const numSquares = numCols * numRows;
+
+      squareContainer.style.width = `${numCols * squareSize}px`;
+      squareContainer.style.height = `${numRows * squareSize}px`;
+
+      let squares: HTMLDivElement[] = [];
+
+      for (let i = 0; i < numSquares; i++) {
+        const square = document.createElement("div");
+        square.classList.add("square");
+        squareContainer.appendChild(square);
+        squares.push(square);
+      }
+
+      const animateSquares = () => {
+        tl.to("#square-container", {
+          css: {
+            backgroundColor: "transparent",
+          },
+        })
+          .fromTo(
+            squares,
+            {
+              opacity: 1,
+            },
+            {
+              opacity: 0,
+              delay: 0.1,
+              stagger: {
+                each: 0.01,
+                from: "random",
+              },
+            },
+          )
+          .to("#square-container", {
+            css: {
+              display: "none",
+            },
+          })
+          .to("main", {
+            css: {
+              height: "100%",
+            },
+          });
+      };
+
+      animateSquares();
 
       window.addEventListener("scroll", () => {
         const value = window.scrollY;
@@ -37,7 +97,11 @@ export default function Home() {
   }, []);
 
   return (
-    <main className='min-h-screen bg-gradient-body overflow-x-hidden'>
+    <main className='relative h-screen bg-gradient-body overflow-hidden'>
+      <div
+        id='square-container'
+        className='absolute bg-[#2b1055] overflow-hidden flex flex-wrap inset-0 z-[60]'
+      />
       <header className='absolute top-0 left-0 z-50 flex justify-between items-center w-full py-7 px-24 '>
         <Link
           href='#'
