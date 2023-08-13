@@ -50,6 +50,33 @@ export default function Home() {
         squares.push(square);
       }
 
+      const elements = document.querySelectorAll(
+        ".text",
+      ) as NodeListOf<HTMLElement>;
+
+      elements.forEach(element => {
+        const innerText = element.innerText;
+        element.innerHTML = "";
+
+        const textContainer = document.createElement("div");
+        textContainer.classList.add("block");
+        for (let letter of innerText) {
+          let span = document.createElement("span");
+          span.innerText = letter.trim() === "" ? "\xa0" : letter;
+          span.classList.add("letter");
+          textContainer.appendChild(span);
+        }
+
+        element.appendChild(textContainer);
+        element.appendChild(textContainer.cloneNode(true));
+      });
+
+      elements.forEach(element => {
+        element.addEventListener("mouseover", () => {
+          element.classList.remove("play");
+        });
+      });
+
       const animateSquares = () => {
         tl.to("#square-container", {
           css: {
@@ -207,20 +234,20 @@ export default function Home() {
         >
           {open ? "Close" : "Menu"}
         </button>
-        <ul className='sm:hidden'>
+        <ul className='sm:hidden gap-1'>
           <li>
-            <Link href='#' className='active'>
+            <Link href='#' className='active text'>
               Home
             </Link>
           </li>
           <li>
-            <Link href='#'>About</Link>
+            <Link href='#' className = 'text'>About</Link>
           </li>
           <li>
-            <Link href='#'>Work</Link>
+            <Link href='#' className = 'text'>Work</Link>
           </li>
           <li>
-            <Link href='#'>Contact</Link>
+            <Link href='#' className = 'text'>Contact</Link>
           </li>
         </ul>
       </header>
@@ -246,7 +273,7 @@ export default function Home() {
         <a
           href='#sec'
           id='btn'
-          className='inline-block py-2 px-7 rounded-2xl bg-white text-[#2b1055] text-[1.5em] sm:text-base z-10 translate-y-24 '
+          className='text !h-[50px] inline-block py-2 px-7 rounded-2xl bg-white text-[#2b1055] text-[1.5em] sm:text-base z-10 translate-y-24 '
         >
           Explore
         </a>

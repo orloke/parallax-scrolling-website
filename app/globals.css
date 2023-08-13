@@ -18,12 +18,7 @@ header ul {
   @apply absolute;
 }
 
-header ul li a {
-  @apply py-1.5 px-4 text-white rounded-2xl transition-colors duration-300;
-}
-
-header ul li a:hover,
-header ul li a.active {
+.text.active {
   @apply bg-white text-[#2b1055];
 }
 
@@ -38,4 +33,55 @@ section img {
 
 .square {
   @apply w-[100px] h-[100px] bg-[#2b1055] pointer-events-none;
+}
+
+.text {
+  @apply overflow-hidden h-[35px] inline-block py-1.5 px-4 text-white rounded-2xl transition-colors duration-300
+  hover:bg-white;
+}
+
+.text:hover .letter,
+.text.play .letter {
+  transform: translateY(-110%);
+}
+
+.text .block:last-child {
+  @apply text-[#2b1055] italic
+}
+
+.text .letter {
+  display: inline-block;
+  transition: transform 0.6s cubic-bezier(0.76, 0, 0.024, 1);
+}
+
+.letter:nth-child(1) {
+  transition-delay: 0s;
+}
+
+.letter:nth-child(2) {
+  transition-delay: 0.03s;
+}
+
+.letter:nth-child(3) {
+  transition-delay: 0.06s;
+}
+
+.letter:nth-child(4) {
+  transition-delay: 0.09s;
+}
+
+.letter:nth-child(5) {
+  transition-delay: 0.12s;
+}
+
+.letter:nth-child(6) {
+  transition-delay: 0.15s;
+}
+
+.letter:nth-child(7) {
+  transition-delay: 0.18s;
+}
+
+.letter:nth-child(8) {
+  transition-delay: 0.21s;
 }
