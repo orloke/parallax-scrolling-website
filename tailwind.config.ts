@@ -12,6 +12,9 @@ const config: Config = {
         "gradient-body": "linear-gradient(#2b1055,#7597de)",
         "gradient-before": "linear-gradient(to top, #1c0522,transparent)",
       },
+      screens:{
+        'sm': {'min': '0px', 'max': '767px'}
+      }
     },
   },
   plugins: [],

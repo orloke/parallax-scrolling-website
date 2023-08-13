@@ -102,7 +102,7 @@ export default function Home() {
         id='square-container'
         className='absolute bg-[#2b1055] overflow-hidden flex flex-wrap inset-0 z-[60]'
       />
-      <header className='absolute top-0 left-0 z-50 flex justify-between items-center w-full py-7 px-24 '>
+      <header className='absolute top-0 left-0 z-50 flex justify-between items-center w-full py-7 px-24 sm:hidden '>
         <Link
           href='#'
           className='text-white font-bold text-[2em] uppercase tracking-[2px]  '
@@ -127,7 +127,7 @@ export default function Home() {
         </ul>
       </header>
       <section
-        className='relative flex justify-center items-center w-full h-screen p-24 before:content-[""] before:absolute before:bottom-0 
+        className='relative flex justify-center items-center w-full h-screen p-24 sm:p-4 before:content-[""] before:absolute before:bottom-0 
       before:w-full before:h-24 before:z-50 before:bg-gradient-before overflow-hidden '
       >
         <Image src={stars} alt='stars' id='stars' />
@@ -140,7 +140,7 @@ export default function Home() {
 
         <h2
           id='text'
-          className='absolute text-white whitespace-nowrap text-[7.5vw] z-10 -translate-x-full'
+          className='absolute text-white whitespace-nowrap text-[7.5vw] sm:text-6xl z-10 -translate-x-full'
         >
           Moon Light
         </h2>
@@ -148,7 +148,7 @@ export default function Home() {
         <a
           href='#sec'
           id='btn'
-          className='inline-block py-2 px-7 rounded-2xl bg-white text-[#2b1055] text-[1.5em] z-10 translate-y-24 '
+          className='inline-block py-2 px-7 rounded-2xl bg-white text-[#2b1055] text-[1.5em] sm:text-base z-10 translate-y-24 '
         >
           Explore
         </a>
@@ -160,11 +160,11 @@ export default function Home() {
           className='z-20'
         />
       </section>
-      <div id='sec' className='relative p-24 bg-[#1c0522]'>
-        <h2 className='text-[3.5em] mb-2.5 text-white'>
+      <div id='sec' className='relative p-24 sm:p-4 bg-[#1c0522]'>
+        <h2 className='text-[3.5em] sm:text-xl sm:text-center mb-2.5 text-white'>
           Parallax Scrolling Effects
         </h2>
-        <p className='text-[1.2em] text-white text-justify'>
+        <p className='text-[1.2em] sm:text-base text-white text-justify'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa harum
           sint tempore perferendis ducimus, eum, veniam in cupiditate quidem
           odit laborum ipsam quo minima rerum. Quia dolore tempore magni hic.
