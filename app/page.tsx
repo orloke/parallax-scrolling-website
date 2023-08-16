@@ -342,7 +342,7 @@ export default function Home() {
         </p>
       </div>
       <footer className='fixed bottom-0 left-0 w-full h-20 -z-10 flex justify-center items-center bg-[#1c0522] py-4'>
-        <p className='font-bold text-center'>Made whit ❤️ by Júnior Dering</p>
+        <p className='font-bold text-center'>Made whit 💜 by Júnior Dering</p>
       </footer>
     </main>
   );
