@@ -136,7 +136,7 @@ export default function Home() {
         }
       });
     }
-  }, []);
+  }, [open]);
 
   const menuMobile = () => {
     setOpen(prev => !prev);
