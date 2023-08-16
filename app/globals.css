@@ -27,8 +27,8 @@ section img {
 }
 
 ::selection {
-  color: #2b1055;
-  background: white;
+  color: white;
+  background-color: #2b1055;
 }
 
 .square {

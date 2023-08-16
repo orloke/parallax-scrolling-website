@@ -8,6 +8,7 @@ import mountains_front from "@/app/assets/mountains_front.png";
 import mountains_behind from "@/app/assets/mountains_behind.png";
 import { useEffect, useState } from "react";
 import { gsap } from "gsap";
+import { start } from "repl";
 
 export default function Home() {
   const [open, setOpen] = useState(false);
@@ -24,6 +25,7 @@ export default function Home() {
       const text = document.querySelector("#text") as HTMLElement;
       const btn = document.querySelector("#btn") as HTMLElement;
       const header = document.querySelector("header") as HTMLElement;
+      const footer = document.querySelector("footer") as HTMLElement;
 
       const squareContainer = document.querySelector(
         "#square-container",
@@ -112,6 +114,15 @@ export default function Home() {
       animateSquares();
 
       window.addEventListener("scroll", () => {
+        document.addEventListener("scroll", function (e) {
+          let documentHeight = document.body.scrollHeight;
+          let currentScroll = window.scrollY + window.innerHeight;
+          if (currentScroll > documentHeight) {
+            footer.style.zIndex = "0";
+          } else {
+            footer.style.zIndex = "-10";
+          }
+        });
         const value = window.scrollY;
         stars.style.left = value * 0.25 + "px";
         moon.style.top = value * 1.05 + "px";
@@ -241,13 +252,19 @@ export default function Home() {
             </Link>
           </li>
           <li>
-            <Link href='#' className = 'text'>About</Link>
+            <Link href='#' className='text'>
+              About
+            </Link>
           </li>
           <li>
-            <Link href='#' className = 'text'>Work</Link>
+            <Link href='#' className='text'>
+              Work
+            </Link>
           </li>
           <li>
-            <Link href='#' className = 'text'>Contact</Link>
+            <Link href='#' className='text'>
+              Contact
+            </Link>
           </li>
         </ul>
       </header>
@@ -285,7 +302,7 @@ export default function Home() {
           className='z-20'
         />
       </section>
-      <div id='sec' className='relative p-24 sm:p-4 bg-[#1c0522]'>
+      <div id='sec' className='p-24 pb-0 mb-20 sm:p-4 bg-[#1c0522]'>
         <h2 className='text-[3.5em] sm:text-xl sm:text-center mb-2.5 text-white'>
           Parallax Scrolling Effects
         </h2>
@@ -324,6 +341,9 @@ export default function Home() {
           error fuga. Id, rerum.
         </p>
       </div>
+      <footer className='fixed bottom-0 left-0 w-full h-20 -z-10 flex justify-center items-center bg-[#1c0522] py-4'>
+        <p className='font-bold text-center'>Made whit ❤️ by Júnior Dering</p>
+      </footer>
     </main>
   );
 }
