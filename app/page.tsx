@@ -186,20 +186,20 @@ export default function Home() {
   };
 
   return (
-    <main className='relative h-screen bg-gradient-body overflow-hidden'>
+    <main className='relative h-screen overflow-hidden bg-gradient-body'>
       <div
         id='menuMobile'
-        className='hidden sm:flex h-auto relative w-full z-[60] inset-0'
+        className='relative inset-0 z-[60] hidden h-auto w-full sm:flex'
       >
         <div
           id='revealMenuBackground'
-          className='absolute inset-0 h-0 -z-10 bg-[#7597de]'
+          className='absolute inset-0 -z-10 h-0 bg-[#7597de]'
         />
         <div
           id='revealMenu'
-          className='absolute inset-0 h-0 bg-[#2b1055] overflow-hidden'
+          className='absolute inset-0 h-0 overflow-hidden bg-[#2b1055]'
         >
-          <ul className='flex flex-col justify-center items-center gap-20 w-full h-full'>
+          <ul className='flex h-full w-full flex-col items-center justify-center gap-20'>
             <li>
               <Link id='linkMenuMobile' href='#' className='active'>
                 Home
@@ -211,8 +211,8 @@ export default function Home() {
               </Link>
             </li>
             <li>
-              <Link id='linkMenuMobile' href='#'>
-                Work
+              <Link id='linkMenuMobile' href='/gallery'>
+                Gallery
               </Link>
             </li>
             <li>
@@ -225,27 +225,27 @@ export default function Home() {
       </div>
       <div
         id='square-container'
-        className='absolute bg-[#2b1055] overflow-hidden flex flex-wrap inset-0 z-[80]'
+        className='absolute inset-0 z-[80] flex flex-wrap overflow-hidden bg-[#2b1055]'
       />
       <header
         className={`${
           open ? "fixed" : "absolute"
-        } top-0 left-0 z-[70] flex justify-between items-center w-full py-7 px-24 sm:px-4`}
+        } left-0 top-0 z-[70] flex w-full items-center justify-between px-24 py-7 sm:px-4`}
       >
         <Link
           href='#'
-          className='text-white font-bold text-[2em] sm:text-base uppercase tracking-[2px]  '
+          className='text-[2em] font-bold uppercase tracking-[2px] text-white sm:text-base  '
         >
           Logo
         </Link>
         <button
-          className='hidden sm:flex text-center font-bold text-[2em] sm:text-sm uppercase tracking-[2px] py-1 px-2
-            rounded-2xl transition-colors duration-300 bg-white text-[#2b1055]'
+          className='hidden rounded-2xl bg-white px-2 py-1 text-center text-[2em] font-bold uppercase tracking-[2px]
+            text-[#2b1055] transition-colors duration-300 sm:flex sm:text-sm'
           onClick={menuMobile}
         >
           {open ? "Close" : "Menu"}
         </button>
-        <ul className='sm:hidden gap-1'>
+        <ul className='gap-1 sm:hidden'>
           <li>
             <Link href='#' className='active text'>
               Home
@@ -257,8 +257,8 @@ export default function Home() {
             </Link>
           </li>
           <li>
-            <Link href='#' className='text'>
-              Work
+            <Link href='/gallery' className='text'>
+              Gallery
             </Link>
           </li>
           <li>
@@ -269,8 +269,8 @@ export default function Home() {
         </ul>
       </header>
       <section
-        className='relative flex justify-center items-center w-full h-screen p-24 sm:p-4 before:content-[""] before:absolute before:bottom-0 
-      before:w-full before:h-24 before:z-50 before:bg-gradient-before overflow-hidden '
+        className='relative flex h-screen w-full items-center justify-center overflow-hidden p-24 before:absolute before:bottom-0 before:z-50 
+      before:h-24 before:w-full before:bg-gradient-before before:content-[""] sm:p-4 '
       >
         <Image src={stars} alt='stars' id='stars' />
         <Image src={moon} alt='moon' id='moon' className='mix-blend-screen' />
@@ -282,7 +282,7 @@ export default function Home() {
 
         <h2
           id='text'
-          className='absolute text-white whitespace-nowrap text-[7.5vw] sm:text-6xl z-10 -translate-x-full'
+          className='absolute z-10 -translate-x-full whitespace-nowrap text-[7.5vw] text-white sm:text-6xl'
         >
           Moon Light
         </h2>
@@ -290,7 +290,7 @@ export default function Home() {
         <a
           href='#sec'
           id='btn'
-          className='text !h-[50px] inline-block py-2 px-7 rounded-2xl bg-white text-[#2b1055] text-[1.5em] sm:text-base z-10 translate-y-24 '
+          className='text z-10 inline-block !h-[50px] translate-y-24 rounded-2xl bg-white px-7 py-2 text-[1.5em] text-[#2b1055] sm:text-base '
         >
           Explore
         </a>
@@ -302,11 +302,11 @@ export default function Home() {
           className='z-20'
         />
       </section>
-      <div id='sec' className='p-24 pb-0 mb-20 sm:p-4 bg-[#1c0522]'>
-        <h2 className='text-[3.5em] sm:text-xl sm:text-center mb-2.5 text-white'>
+      <div id='sec' className='mb-20 bg-[#1c0522] p-24 pb-0 sm:p-4'>
+        <h2 className='mb-2.5 text-[3.5em] text-white sm:text-center sm:text-xl'>
           Parallax Scrolling Effects
         </h2>
-        <p className='text-[1.2em] sm:text-base text-white text-justify'>
+        <p className='text-justify text-[1.2em] text-white sm:text-base'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa harum
           sint tempore perferendis ducimus, eum, veniam in cupiditate quidem
           odit laborum ipsam quo minima rerum. Quia dolore tempore magni hic.
@@ -317,7 +317,7 @@ export default function Home() {
           Provident, adipisci consequatur. Nostrum, dicta quo veniam alias
           quisquam autem, quae tempore magnam sequi aperiam quas qui voluptates
           error fuga. Id, rerum.
-          <span className='flex mb-2' />
+          <span className='mb-2 flex' />
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa harum
           sint tempore perferendis ducimus, eum, veniam in cupiditate quidem
           odit laborum ipsam quo minima rerum. Quia dolore tempore magni hic.
@@ -328,7 +328,7 @@ export default function Home() {
           Provident, adipisci consequatur. Nostrum, dicta quo veniam alias
           quisquam autem, quae tempore magnam sequi aperiam quas qui voluptates
           error fuga. Id, rerum.
-          <span className='flex mb-2' />
+          <span className='mb-2 flex' />
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa harum
           sint tempore perferendis ducimus, eum, veniam in cupiditate quidem
           odit laborum ipsam quo minima rerum. Quia dolore tempore magni hic.
@@ -341,8 +341,8 @@ export default function Home() {
           error fuga. Id, rerum.
         </p>
       </div>
-      <footer className='fixed bottom-0 left-0 w-full h-20 -z-10 flex justify-center items-center bg-[#1c0522] py-4'>
-        <p className='font-bold text-center'>Made whit 💜 by Júnior Dering</p>
+      <footer className='fixed bottom-0 left-0 -z-10 flex h-20 w-full items-center justify-center bg-[#1c0522] py-4'>
+        <p className='text-center font-bold'>Made whit 💜 by Júnior Dering</p>
       </footer>
     </main>
   );
