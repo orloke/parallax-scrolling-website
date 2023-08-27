@@ -8,7 +8,6 @@ import mountains_front from "@/app/assets/mountains_front.png";
 import mountains_behind from "@/app/assets/mountains_behind.png";
 import { useEffect, useState } from "react";
 import { gsap } from "gsap";
-import { start } from "repl";
 
 export default function Home() {
   const [open, setOpen] = useState(false);
