@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 interface IsHovered extends HTMLElement {
   isHovered: boolean;
-} 
+}
 
 const Page = () => {
   useEffect(() => {
@@ -54,11 +54,11 @@ const Page = () => {
   }, []);
 
   return (
-    <main className='h-screen w-screen overflow-hidden bg-[#0f0f0f] '>
+    <main className='h-screen w-screen overflow-hidden bg-[#2b1055] '>
       <div className='absolute left-1/2 top-1/2 m-auto flex  w-1/2 origin-center -translate-x-1/2 -translate-y-1/2 justify-center px-[0.5em] py-[1em] '>
         <div
           id='indicator'
-          className='absolute inset-0 h-1 w-1 rounded-full bg-white transition-all duration-1000'
+          className='absolute inset-0 h-1 w-1 rounded-full bg-white mix-blend-difference transition-all duration-1000'
         />
         <div
           id='gallery'
